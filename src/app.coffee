@@ -27,6 +27,8 @@ app.configure 'development', ->
 
 app.get('/', store.home)
 app.get('/users', user.list)
+app.get '/admin', (req, res) ->
+  res.render 'admin', {'title': "Admin"}
 
 server = http.createServer(app).listen app.get('port'), ->
   console.log("Express server listening on port " + app.get('port'))
