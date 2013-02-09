@@ -4,11 +4,9 @@ block script
   script(src='/javascripts/admin.coffee', type='text/coffeescript')
 
 block content
-  .container-fluid
-    .row-fluid
-      .span2
-      .span8.span-center
-        .row-fluid
+  .container-narrow
+    .text-center
+        .row
           .btn-group#input-type(data-toggle="buttons-radio")
             button.btn.btn-success.btn-large.active(data-type='text') Text
             button.btn.btn-success.btn-large(data-type='image') Picture
@@ -16,15 +14,38 @@ block content
             button.btn.btn-success.btn-large.disabled(data-type='twitter') Twitter
             button.btn.btn-success.btn-large.disabled(data-type='facebook') Facebook
             button.btn.btn-success.btn-large.disabled(data-type='chat') Chat
-        #input-form
-          .row-fluid
-            input.vert-center#input-text(type='text', name='name')
-          .row-fluid(style='display: none')
-            input.vert-center#input-file(type='file', name='name')
-          .row-fluid(style='display: none')
-            input.vert-center#input-image(type='text', name='name')
-          .row-fluid(style='display: none')
-            input.vert-center#input-web(type='text', name='name')
-        .row-fluid
+        form#input-form.form-horizontal
+          .row.vert-center
+            .control-group.center-block
+              label.control-label Message text
+              .controls
+                input#input-text(type='text', name='name')
+          .row.vert-center(style='display: none')
+              .control-group.center-block
+                label.control-label Picture file
+                .controls
+                  input#input-file(type='file', name='name')
+          .row.vert-center(style='display: none')
+              .control-group.center-block
+                label.control-label Picture url
+                .controls
+                  input#input-image(type='text', name='name')
+          .row.vert-center(style='display: none')
+              .control-group.center-block
+                label.control-label Website url
+                .controls
+                  input#input-web(type='text', name='name')
+          .row
+            .span8
+              label.control-label Display until
+              .controls.text-left
+                .input-append.bootstrap-timepicker
+                  input#timepicker.input-small(value="20:00", type="text")
+                  span.add-on
+                    i.icon-time
+                .input-append.date(data-date="12-02-2012", data-date-format="dd/mm/yyyy", style='margin-left: 20px')
+                  input#datepicker(size="16", value="12-02-2012", readonly="", type="text")
+                  span.add-on
+                    i.icon-calendar
+        .row.text-center
           button.btn.btn-large.btn-primary#send Send
-      .span2
