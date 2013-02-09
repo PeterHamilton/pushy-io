@@ -9,7 +9,15 @@ $ ->
   username = prompt "Username:", ""
 
   $('#send').click ->
+    type = $('#inputType').val()
+    value = $("#input-#{type}").val()
     socket.emit 'push',
       author: username
-      text: $('#input').val()
+      type: type
+      payload: switch type
+        when 'text'
+          message: value
+        when 'image', 'web'
+          url: value
+
     console.log "sent"

@@ -2,10 +2,10 @@ module.exports = (server) ->
 
   # Attach to a server
   io = require('socket.io').listen(server)
+  UniqueID = require './model/unique'
 
   # Local storage
   queue = []
-  changed = false
 
   # Number of milliseconds to trigger update
   updateDelay = 3000
@@ -16,11 +16,12 @@ module.exports = (server) ->
     # Registering a new hand
     socket.on 'push', (hand) ->
       console.log "received " + hand
-      queue.unshift hand
-      changed = true
+      hand.id = new UniqueID
+      queue.splice position, 0, hand
 
+  position = 0
   setInterval ->
-    if changed
-      io.sockets.emit 'data', queue[0]
-      changed = false
+    if queue.length > 0
+      io.sockets.emit 'data', queue[position % queue.length]
+    position++
   , updateDelay

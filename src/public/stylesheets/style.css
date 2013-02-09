@@ -1,27 +1,25 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 40px;
+  color: #5a5a5a;
 }
-a {
-  color: #00b7ff;
+header {
+  margin-bottom: 15px;
+  background-color: #013f7a;
+  color: #fff;
 }
-#header {
-  margin: 0px 50px;
+.link {
+  color: #08c;
+  text-decoration: none;
 }
-#sidebar {
-  width: 450px;
-  float: left;
-  margin: 0px 50px;
+.linkhover {
+  text-decoration: underline;
 }
-#form {
-  padding: 20px;
-  float: left;
-  clear: both;
+.centered {
+  text-align: center;
 }
-#label {
-  float: left;
-  margin-right: 20px;
-}
-input {
-  float: left;
+.loading {
+  text-align: center;
+  background: url("/images/ajax-loader.gif") center center no-repeat;
+  height: 32px;
+  width: 100%;
 }
