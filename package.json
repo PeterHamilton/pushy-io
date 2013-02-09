@@ -8,7 +8,9 @@
     "jasmine-node": ">=1.0.26",
     "stylus": ">=0.31.0",
     "socket.io": "~0.9.13",
-    "mongoose": "~3.5.5"
+    "mongoose": "~3.5.5",
+    "request": "*",
+    "cheerio": "*"
   },
   "engines": {
     "node": "0.6.15",

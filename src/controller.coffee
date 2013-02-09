@@ -19,9 +19,27 @@ module.exports = (server) ->
       hand.id = new UniqueID
       queue.splice position, 0, hand
 
+  queue.push require './model/notifications'
+
+  pushHand = (hand) ->
+    io.sockets.emit 'data', hand
+
   position = 0
-  setInterval ->
-    if queue.length > 0
-      io.sockets.emit 'data', queue[position % queue.length]
+  nextHand = ->
+    hand = queue[position % queue.length]
     position++
-  , updateDelay
+    return hand
+
+  pushNextHand = ->
+    if queue.length > 0
+      hand = nextHand()
+      if typeof(hand) == 'function'
+        hand (hand) ->
+          if hand?
+            pushHand hand
+          else
+            pushNextHand()
+      else
+        pushHand hand
+
+  setInterval pushNextHand, updateDelay
