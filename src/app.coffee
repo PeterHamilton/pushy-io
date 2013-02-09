@@ -7,8 +7,20 @@ store      = require('./routes/store')
 user       = require('./routes/user')
 http       = require('http')
 path       = require('path')
+mongoose   = require 'mongoose'
+
+mongoURL = 'mongodb://mongodb:abMobdims4@ec2-54-228-51-119.eu-west-1.compute.amazonaws.com:27017/'
 
 app = express()
+
+Schema = mongoose.Schema
+ObjectId = Schema.ObjectId
+mongoose.connection.on 'open', ->
+  console.log 'connected to mongo'
+mongoose.connection.on 'error', (err) ->
+  if err? then throw err
+  console.log 'connection eror'
+mongoose.connect mongoURL
 
 app.configure ->
   app.set('port', process.env.PORT || 3000 || 80)
