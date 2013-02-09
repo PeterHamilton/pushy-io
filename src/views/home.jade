@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  #page
+    #header
+      h1= title
+    #sidebar
+      #form
+        input#input(type='text', name='name')
+        button#send Join
+      #players
+        h3 Players online
+        ul#playerList
+          //li(class="ui-state-default", data-uid='mfman')
+          //  ='The Muffin Man'
+          //li(class="ui-state-default" )
+          //  ='The Ginger Bread Man'
+    #content(style='display: none')
+      #dropTo
+        #description
+          h3 Challenge a player by dropping him here
+        #tabs
+          ul#tabsmenu
+    #footer
+    #challengePrompt
+      //p I am challenging you in a game of #{title}

@@ -1,0 +1,41 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+#header {
+  margin: 0px 50px;
+}
+#sidebar {
+  width: 250px;
+  float: left;
+  margin: 0px 50px;
+}
+#playerList {
+  list-style-type: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+#playerList li {
+  padding: 5px;
+  margin: 5px 0px;
+}
+#content {
+  float: left;
+}
+#dropTo,
+#tabs {
+  float: left;
+}
+#tabsmenu,
+#description {
+  text-align: right;
+}
+.whitePlayer {
+  color: #f60;
+}
+.blackPlayer {
+  color: #07f;
+}
