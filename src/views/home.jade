@@ -7,3 +7,16 @@ block content
   .container-fluid
     .row-fluid
       #main-content
+        #loading.loading
+        #dashboard.view-pane(style="display:none")
+          .span8
+            h1 Notifications
+            #notices
+
+          .span4
+            h1 Twitter Feed
+            #twitter-widget
+              a.twitter-timeline(href="https://twitter.com/search?q=%23IChack", "data-widget-id"="300189295266893824")
+              script(type='text/javascript')
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
