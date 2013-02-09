@@ -1,7 +1,6 @@
-Othello
-=======
+pushy-io
+========
 
-Multiplayer Othello game in CoffeeScript.
+Wassap Hackers!!
 
-For main game logic, look into src/model/game for Othello, Players and Board
-classes.
+Distributed Screen Notifications
