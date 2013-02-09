@@ -6,6 +6,11 @@ html
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/jquery-1.8.1.min.js')
     script(src='/javascripts/coffee-script.js')
+    script(src='https://raw.github.com/timrwood/moment/2.0.0/min/moment.min.js')
     script(src='/javascripts/main.coffee', type='text/coffeescript')
   body
+    header
+      .container-fluid
+        h1.pull-left Lab Screens
+        h1#clock.pull-right
     block content

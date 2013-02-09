@@ -10,3 +10,8 @@ $ ->
     console.log clients
     socket.emit 'wtf', "YEAH, THE FUCK"
     console.log "sent"
+
+  # Clock
+  update = ->
+    $('#clock').html(moment().format('hh:mm:ss a'))
+  setInterval update, 1000
