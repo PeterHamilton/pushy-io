@@ -6,17 +6,21 @@ initialize_socket = ->
   socket = io.connect 'http://localhost:3000'
 
   socket.on 'data', (hand) ->
+    $('body').removeClass('black')
     $('.view-pane').hide()
     $('#loading').show()
-    $('#text').html switch hand.type
+    console.log hand
+    switch hand.type
       when 'dashboard'
         render_dashboard hand.payload
+      when 'image'
+        render_image hand.payload
       # when 'text'
       #   hand.payload.message
       # when 'image'
       #   "<img src='#{hand.payload.url}'>"
-      # when 'web'
-      #   "<iframe width='100%' height='450px' src='#{hand.payload.url}'></image>"
+      when 'web'
+        render_website hand.payload
      # text.toString()
 
 clone_template = (id) ->
@@ -28,15 +32,32 @@ render_dashboard = (payload) ->
   $('#loading').hide()
   $('#dashboard').slideDown()
 
-render_notifications = (notifications, elem) ->
-  elem.find('.notices').html('')
+render_notifications = (notifications) ->
+  $('#notifications').html('')
   $(notifications).each (index, notification) ->
     notification_elem = clone_template 'template-notification'
-
-    notification_elem.find('.alert').addClass(notification.class)
+    if notification.classes?
+      notification_elem.find('.alert').addClass(notification.classes.join(" "))
     notification_elem.find('.body').html(notification.text)
+    notification_elem.find('.title').html("#{notification.author} // #{notification.title}")
 
     $('#notifications').append(notification_elem)
+
+render_website = (payload) ->
+  $('#website-iframe').html('')
+  iframe = '<iframe frameborder="0" width="100%"" height="800px" src="' + payload.url + '"/>'
+  $('#website-iframe').html(iframe)
+  $('#loading').hide()
+  $('#website-iframe').slideDown()
+
+render_image = (payload) ->
+  $('body').addClass('black')
+  $('#image-container').hide()
+  $('#image-container img').attr 'src', payload.url
+  $('#loading').hide()
+  $ ->
+    $('#image-container').slideDown()
+
 
 $ ->
   initialize_socket()

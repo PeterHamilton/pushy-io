@@ -2,7 +2,7 @@ module.exports = (callback) ->
   request = require 'request'
   cheerio = require 'cheerio'
   request 'https://www.doc.ic.ac.uk/csg-res/dynamic/motd.cgi', (error, response, body) ->
-    
+
     if !error && response.statusCode == 200
       $ = cheerio.load body
       titles = $('h2')
@@ -16,7 +16,7 @@ module.exports = (callback) ->
           text: $(ps[i]).text()
       callback
         type: "dashboard"
-        author: "doc"
+        author: "csg"
         payload:
           notifications: notifications
           twitter_widget_id: "#ichack"
