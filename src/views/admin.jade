@@ -4,27 +4,27 @@ block script
   script(src='/javascripts/admin.coffee', type='text/coffeescript')
 
 block content
-  #page
-    #header
-      h1 Push @ pushy.io
-    #sidebar
-      #form
-        #label Type
-        select#inputType
-          option(value='text') Text message
-          option(value='image') Link to a picture
-          option(value='web') Link to a website
-      #form
-        #label Text message
-        input#input-text(type='text', name='name')
-      #form
-        #label Upload a picture
-        input#input-file(type='file', name='name')
-      #form
-        #label Link to a picture
-        input#input-image(type='text', name='name')
-      #form
-        #label Link to a website
-        input#input-web(type='text', name='name')
-      #form
-        button#send Send
+  .container-fluid
+    .row-fluid
+      .span2
+      .span8.span-center
+        .row-fluid
+          .btn-group#input-type(data-toggle="buttons-radio")
+            button.btn.btn-success.btn-large.active(data-type='text') Text
+            button.btn.btn-success.btn-large(data-type='image') Picture
+            button.btn.btn-success.btn-large(data-type='web') Web
+            button.btn.btn-success.btn-large.disabled(data-type='twitter') Twitter
+            button.btn.btn-success.btn-large.disabled(data-type='facebook') Facebook
+            button.btn.btn-success.btn-large.disabled(data-type='chat') Chat
+        #input-form
+          .row-fluid
+            input.vert-center#input-text(type='text', name='name')
+          .row-fluid(style='display: none')
+            input.vert-center#input-file(type='file', name='name')
+          .row-fluid(style='display: none')
+            input.vert-center#input-image(type='text', name='name')
+          .row-fluid(style='display: none')
+            input.vert-center#input-web(type='text', name='name')
+        .row-fluid
+          button.btn.btn-large.btn-primary#send Send
+      .span2

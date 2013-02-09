@@ -2,7 +2,7 @@
   "name": "othello",
   "version": "0.0.1",
   "dependencies": {
-    "coffee-script": ">=1.4.0",
+    "coffee-script": "~1.4.0",
     "express": ">=3.0.3",
     "jade": ">=0.27.7",
     "jasmine-node": ">=1.0.26",
