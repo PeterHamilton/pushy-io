@@ -14,13 +14,19 @@ mongoURL = 'mongodb://Fist:cebVeryof8@ec2-54-228-51-119.eu-west-1.compute.amazon
 app = express()
 
 Schema = mongoose.Schema
-ObjectId = Schema.ObjectId
 mongoose.connection.on 'open', ->
   console.log 'connected to mongo'
 mongoose.connection.on 'error', (err) ->
   if err? then throw err
   console.log 'connection eror'
 mongoose.connect mongoURL
+
+handSchema = new Schema
+  type: String
+  payload: Schema.Types.Mixed
+  author: String
+
+mongoose.model 'Hand', handSchema
 
 app.configure ->
   app.set('port', process.env.PORT || 3000 || 80)
