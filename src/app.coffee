@@ -9,7 +9,7 @@ http       = require('http')
 path       = require('path')
 mongoose   = require 'mongoose'
 
-mongoURL = 'mongodb://mongodb:abMobdims4@ec2-54-228-51-119.eu-west-1.compute.amazonaws.com:27017/'
+mongoURL = 'mongodb://Fist:cebVeryof8@ec2-54-228-51-119.eu-west-1.compute.amazonaws.com:27017/hands'
 
 app = express()
 
