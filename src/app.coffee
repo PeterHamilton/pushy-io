@@ -3,30 +3,15 @@
 #
 
 express    = require('express')
+
+app = express()
+
 store      = require('./routes/store')
 user       = require('./routes/user')
 http       = require('http')
 path       = require('path')
-mongoose   = require 'mongoose'
-
-mongoURL = 'mongodb://Fist:cebVeryof8@ec2-54-228-51-119.eu-west-1.compute.amazonaws.com:27017/hands'
-
-app = express()
-
-Schema = mongoose.Schema
-mongoose.connection.on 'open', ->
-  console.log 'connected to mongo'
-mongoose.connection.on 'error', (err) ->
-  if err? then throw err
-  console.log 'connection eror'
-mongoose.connect mongoURL
-
-handSchema = new Schema
-  type: String
-  payload: Schema.Types.Mixed
-  author: String
-
-mongoose.model 'Hand', handSchema
+mongoose   = require('mongoose')
+db         = require('./db')(mongoose)
 
 app.configure ->
   app.set('port', process.env.PORT || 3000 || 80)
@@ -51,4 +36,4 @@ app.get '/admin', (req, res) ->
 server = http.createServer(app).listen app.get('port'), ->
   console.log("Express server listening on port " + app.get('port'))
 
-require('./controller')(server)
+require('./controller')(server, db)
