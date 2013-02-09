@@ -6,7 +6,5 @@ $ ->
 
   socket = io.connect 'http://localhost:3000'
 
-  socket.on 'clients', (clients) ->
-    console.log clients
-    socket.emit 'wtf', "YEAH, THE FUCK"
-    console.log "sent"
+  socket.on 'data', (text) ->
+    $('#text').text text.toString()

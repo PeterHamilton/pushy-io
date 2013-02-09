@@ -1,10 +1,24 @@
 extends layout
 
+block script
+  script(src='/javascripts/admin.coffee', type='text/coffeescript')
+
 block content
   #page
     #header
-      h1= title
+      h1 Push @ pushy.io
     #sidebar
       #form
-        input#input(type='text', name='name')
+        #label Text message
+        input#inputText(type='text', name='name')
+      #form
+        #label Upload a picture
+        input#inputFile(type='file', name='name')
+      #form
+        #label Link to a picture
+        input#inputImage(type='text', name='name')
+      #form
+        #label Link to a website
+        input#inputWeb(type='text', name='name')
+      #form
         button#send Send

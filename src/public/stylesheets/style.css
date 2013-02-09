@@ -9,33 +9,19 @@ a {
   margin: 0px 50px;
 }
 #sidebar {
-  width: 250px;
+  width: 450px;
   float: left;
   margin: 0px 50px;
 }
-#playerList {
-  list-style-type: none;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-#playerList li {
-  padding: 5px;
-  margin: 5px 0px;
-}
-#content {
+#form {
+  padding: 20px;
   float: left;
+  clear: both;
 }
-#dropTo,
-#tabs {
+#label {
   float: left;
+  margin-right: 20px;
 }
-#tabsmenu,
-#description {
-  text-align: right;
-}
-.whitePlayer {
-  color: #f60;
-}
-.blackPlayer {
-  color: #07f;
+input {
+  float: left;
 }
