@@ -13,7 +13,7 @@ module.exports = (server, db) ->
       queue = hands.concat queue
 
   # Number of milliseconds to trigger update
-  updateDelay = 3000
+  updateDelay = 10 * 1000
 
   # Unique IDs
   UniqueID = require './model/unique'
@@ -33,7 +33,8 @@ module.exports = (server, db) ->
           console.error err
         console.log "Saved " + dbHand
 
-  queue.push require './model/notifications'
+  queue.push require './model/csg_notifications'
+  queue.push require './model/other_notifications'
 
   pushHand = (hand) ->
     io.sockets.emit 'data', hand

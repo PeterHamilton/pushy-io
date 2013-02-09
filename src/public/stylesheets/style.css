@@ -2,6 +2,12 @@ body {
   padding-bottom: 40px;
   color: #5a5a5a;
 }
+body.black {
+  background-color: #000;
+}
+body.black header {
+  margin-bottom: 0px;
+}
 header {
   margin-bottom: 15px;
   background-color: #013f7a;
@@ -24,7 +30,7 @@ header {
 }
 .loading {
   text-align: center;
-  background: url("/images/ajax-loader.gif") center center no-repeat;
+  background: url("/img/ajax-loader.gif") center center no-repeat;
   height: 32px;
   width: 100%;
 }
@@ -39,4 +45,19 @@ header {
 }
 .center-block {
   display: inline-block;
+}
+.notification .alert {
+  padding: 30px 30px 10px 30px;
+}
+.notification .body {
+  font-size: 30px;
+  line-height: 35px;
+}
+.notification .title {
+  text-align: right;
+  padding-top: 20px;
+}
+#image-container img {
+  max-width: 100%;
+  max-height: 950px;
 }
