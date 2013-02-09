@@ -2,16 +2,21 @@ module.exports = (server, db) ->
 
   # Attach to a server
   io = require('socket.io').listen(server)
-  UniqueID = require './model/unique'
+
+  # Model of our data
+  HandModel = db.model 'Hand'
 
   # Local storage
   queue = []
+  HandModel.find {}, (err, hands) ->
+    if hands?
+      queue = hands.concat queue
 
   # Number of milliseconds to trigger update
   updateDelay = 3000
 
-  # Model of our data
-  handModel = db.model 'Hand'
+  # Unique IDs
+  UniqueID = require './model/unique'
 
   # Client connected
   io.on 'connection', (socket) ->
@@ -21,9 +26,11 @@ module.exports = (server, db) ->
       console.log "received " + hand
       hand.id = new UniqueID
       queue.splice position, 0, hand
-      dbHand = new handModel(hand)
+      dbHand = new HandModel hand
       dbHand.save (err) ->
-        if err? then console.log "Unable to save " + dbHand; console.error err
+        if err?
+          console.log "Unable to save " + dbHand
+          console.error err
         console.log "Saved " + dbHand
 
   queue.push require './model/notifications'
