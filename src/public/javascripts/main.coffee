@@ -30,5 +30,5 @@ $ ->
 
   # Clock
   setInterval ->
-    $('#clock').html(moment().format('hh:mm:ss a'))
+    $('#clock').html(moment().format('HH:mm:ss'))
   , 1000
