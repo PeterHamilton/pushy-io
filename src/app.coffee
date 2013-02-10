@@ -6,8 +6,6 @@ express    = require('express')
 
 app = express()
 
-store       = require './routes/store'
-user        = require './routes/user'
 http        = require 'http'
 path        = require 'path'
 mongoose    = require 'mongoose'
@@ -28,10 +26,11 @@ app.configure ->
 app.configure 'development', ->
   app.use express.errorHandler()
 
-app.get('/', store.home)
-app.get('/users', user.list)
+app.get '/', (req, res) ->
+  res.render 'home', 'title': 'Lab Screens'
+
 app.get '/admin', (req, res) ->
-  res.render 'admin', {'title': "Admin"}
+  res.render 'admin', 'title': "Admin"
 
 server = http.createServer(app).listen app.get('port'), ->
   console.log("Express server listening on port " + app.get('port'))
