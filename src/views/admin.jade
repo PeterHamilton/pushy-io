@@ -15,22 +15,22 @@ block content
             button.btn.btn-success.btn-large.disabled(data-type='facebook') Facebook
             button.btn.btn-success.btn-large.disabled(data-type='chat') Chat
         form#input-form.form-horizontal
-          .row.vert-center
+          .row.input-row.vert-center
             .control-group.center-block
               label.control-label Message text
               .controls
                 input#input-text(type='text', name='name')
-          .row.vert-center(style='display: none')
+          .row.input-row.vert-center(style='display: none')
               .control-group.center-block
                 label.control-label Picture file
                 .controls
                   input#input-file(type='file', name='name')
-          .row.vert-center(style='display: none')
+          .row.input-row.vert-center(style='display: none')
               .control-group.center-block
                 label.control-label Picture url
                 .controls
                   input#input-image(type='text', name='name')
-          .row.vert-center(style='display: none')
+          .row.input-row.vert-center(style='display: none')
               .control-group.center-block
                 label.control-label Website url
                 .controls
@@ -40,11 +40,11 @@ block content
               label.control-label Display until
               .controls.text-left
                 .input-append.bootstrap-timepicker
-                  input#timepicker.input-small(value="20:00", type="text")
+                  input#timepicker.input-small(type="text")
                   span.add-on
                     i.icon-time
-                .input-append.date(data-date="12-02-2012", data-date-format="dd/mm/yyyy", style='margin-left: 20px')
-                  input#datepicker(size="16", value="12-02-2012", readonly="", type="text")
+                #datepicker.input-append.date(style='margin-left: 20px')
+                  input(size="16", type="text")
                   span.add-on
                     i.icon-calendar
         .row.text-center

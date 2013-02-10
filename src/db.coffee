@@ -15,8 +15,12 @@ module.exports = (mongoose) ->
 
 	handSchema = new Schema
 		type: String
-		payload: Schema.Types.Mixed
 		author: String
+		payload: Schema.Types.Mixed
+		till: Date
+
+	handSchema.pre 'set', (next, key, value) ->
+		next key, if key is "till" then (new Date value) else value
 
 	mongoose.model 'Hand', handSchema
 
