@@ -1,8 +1,17 @@
 #dashboard
-  #notifications
-    | {#notifications}
-    .notification
-      .alert(class="{#classes}{.} {/classes}")
-        .body {text}
-        .title {author} // {title}
-    | {/notifications}
+  .span8
+    h1 Notifications
+    #notifications
+      | {#notifications}
+      .notification
+        .alert(class="{#classes}{.} {/classes}")
+          .body {text}
+          .title {author} // {title}
+      | {/notifications}
+  .span4
+     h1 Twitter Feed
+     #twitter-widget
+
+script
+  console.log("Hello from coffee - you need some");
+  $('#twitter-widget').twitterSearch({term: "{term|uc}", title: "{term}"})

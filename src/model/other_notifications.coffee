@@ -18,4 +18,4 @@ module.exports = (callback) ->
           classes: ['alert-info']
         }
       ]
-      twitter_widget_id: "#ichack"
+      term: "#ichack"
