@@ -2,7 +2,7 @@ currentType = undefined
 
 # Server - client communication
 initialize_socket = ->
-  socket = io.connect 'http://localhost:3000'
+  socket = io.connect() #'http://localhost:3000'
 
   socket.on 'data', (hand) ->
     $('#loading').show()
