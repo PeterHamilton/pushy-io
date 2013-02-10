@@ -29,23 +29,25 @@ handleSockets = ->
     console.log tillTime()
 
 # Until UI handling
+dateFormat = 'DD/MM/YYYY'
+timeFormat = 'hh:mm a'
 initializeTill = ->
   # Get moment five minutes from now
   defaultMoment = moment().add('minutes', 5)
-  dateFormat = 'dd/mm/yyyy'
-  timeFormat = 'hh:mm a'
 
   # Initialize datepicker
-  defaultDate = defaultMoment.format 'DD/MM/YYYY'
+  defaultDate = defaultMoment.format dateFormat
   $('#datepicker input').val defaultDate
   $('#datepicker').data 'date', defaultDate
-  $('#datepicker').datepicker format: dateFormat
+  $('#datepicker').datepicker format: 'dd/mm/yyyy'
 
   # Initialize timepicker
   $('#timepicker').timepicker 'setTime', defaultMoment.format timeFormat
 
 tillTime = ->
-  +(moment "#{$('#datepicker input').val()} #{$('#timepicker').val()}").toDate()
+  console.log "#{$('#datepicker input').val()} #{$('#timepicker').val()}"
+  +(moment "#{$('#datepicker input').val()} #{$('#timepicker').val()}",
+    "#{dateFormat} #{timeFormat}").toDate()
 
 $ ->
   initializeTill()

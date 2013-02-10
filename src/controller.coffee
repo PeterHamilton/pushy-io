@@ -25,16 +25,20 @@ module.exports = (server, db) ->
     socket.on 'push', (hand) ->
       console.log "received " + hand
       hand.id = new UniqueID
-      queue.splice position, 0, hand
       dbHand = new HandModel hand
       dbHand.save (err) ->
         if err?
           console.log "Unable to save " + dbHand
           console.error err
-        console.log "Saved " + dbHand
+        else
+          console.log "Saved " + dbHand
+        addHand dbHand
 
   queue.push require './model/csg_notifications'
   queue.push require './model/other_notifications'
+
+  addHand = (hand) ->
+    queue.splice position, 0, hand
 
   pushHand = (hand) ->
     io.sockets.emit 'data', hand
@@ -43,6 +47,13 @@ module.exports = (server, db) ->
   nextHand = ->
     hand = queue[position % queue.length]
     position++
+    if hand.till? and hand.till < Date.now()
+      console.log "we get"
+
+      HandModel.remove hand, (err) ->
+        "Unable to remove " + hand
+      queue.splice position - 1, 1
+      return nextHand()
     return hand
 
   pushNextHand = ->
