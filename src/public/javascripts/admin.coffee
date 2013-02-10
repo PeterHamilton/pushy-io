@@ -22,6 +22,8 @@ handleSockets = ->
           message: value
         when 'image', 'web'
           url: value
+        when 'twitter'
+          term: value
 
     console.log "sent"
     console.log tillTime()
