@@ -76,7 +76,7 @@ module.exports = (server, db) ->
   pushNextHand = ->
     if queue.length > 0
       hand = nextHand()
-      if typeof(hand) == 'function'
+      if typeof(hand) is 'function'
         hand (hand) ->
           if hand?
             pushHand hand

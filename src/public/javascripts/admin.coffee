@@ -71,3 +71,8 @@ printTime = (utc) ->
 $ ->
   initializeTill()
   handleSockets()
+
+  # Clock
+  setInterval ->
+    $('#clock').html(moment().format('hh:mm:ss a'))
+  , 1000

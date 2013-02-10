@@ -4,7 +4,7 @@ block script
   script(src='/javascripts/admin.coffee', type='text/coffeescript')
 
 block content
-  .container-narrow
+  .container
     .text-center
         .row
           .btn-group#input-type(data-toggle="buttons-radio")
@@ -13,42 +13,43 @@ block content
             button.btn.btn-success.btn-large(data-type='web') Web
             button.btn.btn-success.btn-large(data-type='twitter') Twitter
             button.btn.btn-success.btn-large(data-type='chat') Chat
-        form#input-form.form-horizontal
-          .row.input-row
-            .control-group.center-block.vert-center
-              label.control-label Message text
-              .controls
-                input#input-text(type='text', name='name')
-            include display_until
-          .row.input-row(style='display: none')
-            .control-group.center-block.vert-center
-              label.control-label Picture file
-              .controls
-                input#input-file(type='file', name='name')
-            include display_until
-          .row.input-row(style='display: none')
-            .control-group.center-block.vert-center
-              label.control-label Picture url
-              .controls
-                input#input-image(type='text', name='name')
-            include display_until
-          .row.input-row(style='display: none')
-            .control-group.center-block.vert-center
-              label.control-label Website url
-              .controls
-                input#input-web(type='text', name='name')
-            include display_until
-          .row.input-row(style='display: none')
-            .control-group.center-block.vert-center
-              label.control-label Twitter search
-              .controls
-                input#input-twitter(type='text', name='name')
-            include display_until
-          .row.input-row(style='display: none')
-            .control-group.center-block.vert-center
-              label.control-label Chat message
-              .controls
-                input#input-chat(type='text', name='name')
+        .row
+          form#input-form.form-horizontal
+            .row.input-row
+              .control-group.center-block.vert-center
+                label.control-label Message text
+                .controls
+                  input#input-text(type='text', name='name')
+              include display_until
+            .row.input-row(style='display: none')
+              .control-group.center-block.vert-center
+                label.control-label Picture file
+                .controls
+                  input#input-file(type='file', name='name')
+              include display_until
+            .row.input-row(style='display: none')
+              .control-group.center-block.vert-center
+                label.control-label Picture url
+                .controls
+                  input#input-image(type='text', name='name')
+              include display_until
+            .row.input-row(style='display: none')
+              .control-group.center-block.vert-center
+                label.control-label Website url
+                .controls
+                  input#input-web(type='text', name='name')
+              include display_until
+            .row.input-row(style='display: none')
+              .control-group.center-block.vert-center
+                label.control-label Twitter search
+                .controls
+                  input#input-twitter(type='text', name='name')
+              include display_until
+            .row.input-row(style='display: none')
+              .control-group.center-block.vert-center
+                label.control-label Chat message
+                .controls
+                  input#input-chat(type='text', name='name')
         .row.text-center
           p
             button.btn.btn-large.btn-primary#send Send
