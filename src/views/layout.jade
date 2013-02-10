@@ -3,13 +3,14 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/jquery-1.9.1.min.js')
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/coffee-script.js')
     script(src='https://raw.github.com/timrwood/moment/2.0.0/min/moment.min.js')
-    script(src='http://widgets.twimg.com/j/2/widget.js')
+    script(src='/javascripts/jquery.twitter.search.js')
     block script
   body
     include templates

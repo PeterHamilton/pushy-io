@@ -18,12 +18,18 @@ block content
             button.btn.btn-success.btn-large.disabled(data-type='chat') Chat
         #input-form
           .row-fluid
-            input.vert-center#input-text(type='text', name='name')
+            .input-prepend
+              span.add-on
+                i.icon-comment
+              input.span2.vert-center#input-text(type='text', name='name', placeholder="Text Message")
           .row-fluid(style='display: none')
+            span Picture file
             input.vert-center#input-file(type='file', name='name')
           .row-fluid(style='display: none')
+            span Picture URL
             input.vert-center#input-image(type='text', name='name')
           .row-fluid(style='display: none')
+            span Website URL
             input.vert-center#input-web(type='text', name='name')
         .row-fluid
           button.btn.btn-large.btn-primary#send Send

@@ -15,6 +15,8 @@ initialize_socket = ->
         render_dashboard hand.payload
       when 'image'
         render_image hand.payload
+      when 'twitter'
+        render_twitter hand.payload
       # when 'text'
       #   hand.payload.message
       # when 'image'
@@ -43,6 +45,10 @@ render_notifications = (notifications) ->
 
     $('#notifications').append(notification_elem)
 
+render_twitter = (payload) ->
+  $('#twitter-widget').twitterSearch
+    term:  'ICHack'
+
 render_website = (payload) ->
   $('#website-iframe').html('')
   iframe = '<iframe frameborder="0" width="100%"" height="800px" src="' + payload.url + '"/>'
@@ -58,10 +64,9 @@ render_image = (payload) ->
   $ ->
     $('#image-container').slideDown()
 
-
 $ ->
   initialize_socket()
-
+  render_twitter()
   # Clock
   setInterval ->
     $('#clock').html(moment().format('hh:mm:ss a'))
