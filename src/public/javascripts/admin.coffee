@@ -35,11 +35,16 @@ handleSockets = ->
       if success?
         console.log success
         input.val ''
-        $('.successMessage').text "#{currentType.text()} successfully pushed, " +
+        textResult = "#{currentType.text()} successfully pushed, " +
           if success.firstTime < Date.now()
             "it is being shown."
           else
             "it will be shown at #{printTime success.firstTime}."
+        $.bootstrapGrowl textResult,
+          offset:
+            from: 'top'
+            amount: 80
+          type: 'success'
 
     console.log "sent"
     console.log tillTime()
