@@ -36,10 +36,13 @@ handleSockets = ->
         console.log success
         input.val ''
         textResult = "#{currentType.text()} successfully pushed, " +
-          if success.firstTime < Date.now()
-            "it is being shown."
+          if not success.firstTime?
+            "Have fun."
           else
-            "it will be shown at #{printTime success.firstTime}."
+            if success.firstTime < Date.now()
+              "it is being shown."
+            else
+              "it will be shown at #{printTime success.firstTime}."
         $.bootstrapGrowl textResult,
           offset:
             from: 'top'

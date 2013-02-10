@@ -29,6 +29,7 @@ module.exports = (server, db) ->
       if hand.type is 'chat'
         addToChat hand
         socket.broadcast.emit 'chat-data', hand
+        success {}
       else
         hand.id = new UniqueID
         dbHand = new HandModel hand
@@ -85,4 +86,5 @@ module.exports = (server, db) ->
       else
         pushHand hand
 
+  pushNextHand()
   setInterval pushNextHand, updateDelay
