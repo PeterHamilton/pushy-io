@@ -1,0 +1,8 @@
+#dashboard.container-fluid.padded-main
+  .row-fluid
+    .span12
+      h1 Chat
+      #chat-messages.
+        {#messages}
+          {>chat_message/}
+        {/messages}

@@ -1,21 +1,18 @@
 body {
-  padding-bottom: 40px;
   color: #5a5a5a;
+  overflow: hidden;
 }
-body.black {
-  background-color: #000;
-}
-body.black header {
-  margin-bottom: 0px;
-}
-header {
-  margin-bottom: 15px;
+#header {
   background-color: #013f7a;
   color: #fff;
 }
 .container-narrow {
   width: 700px;
   margin: 0px auto;
+}
+.padded-main {
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
 .link {
   color: #08c;
@@ -33,6 +30,10 @@ header {
   background: url("/img/ajax-loader.gif") center center no-repeat;
   height: 32px;
   width: 100%;
+  margin: 200px 0px;
+}
+.background-black {
+  background-color: #000;
 }
 .hidden {
   display: none;
@@ -63,4 +64,7 @@ header {
 }
 .input-append .add-on {
   border-radius: 0 4px 4px 0;
+}
+.datepicker {
+  padding: 0px;
 }

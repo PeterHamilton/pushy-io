@@ -12,44 +12,46 @@ block content
             button.btn.btn-success.btn-large(data-type='image') Picture
             button.btn.btn-success.btn-large(data-type='web') Web
             button.btn.btn-success.btn-large(data-type='twitter') Twitter
-            button.btn.btn-success.btn-large.disabled(data-type='chat') Chat
+            button.btn.btn-success.btn-large(data-type='chat') Chat
         form#input-form.form-horizontal
-          .row.input-row.vert-center
-            .control-group.center-block
+          .row.input-row
+            .control-group.center-block.vert-center
               label.control-label Message text
               .controls
                 input#input-text(type='text', name='name')
-          .row.input-row.vert-center(style='display: none')
-              .control-group.center-block
-                label.control-label Picture file
-                .controls
-                  input#input-file(type='file', name='name')
-          .row.input-row.vert-center(style='display: none')
-              .control-group.center-block
-                label.control-label Picture url
-                .controls
-                  input#input-image(type='text', name='name')
-          .row.input-row.vert-center(style='display: none')
-              .control-group.center-block
-                label.control-label Website url
-                .controls
-                  input#input-web(type='text', name='name')
-          .row.input-row.vert-center(style='display: none')
-              .control-group.center-block
-                label.control-label Twitter search
-                .controls
-                  input#input-twitter(type='text', name='name')
-          .row
-            .span8
-              label.control-label Display until
-              .controls.text-left
-                .input-append.bootstrap-timepicker
-                  input#timepicker.input-small(type="text")
-                  span.add-on
-                    i.icon-time
-                #datepicker.input-append.date(style='margin-left: 20px')
-                  input(size="16", type="text")
-                  span.add-on
-                    i.icon-calendar
+            include display_until
+          .row.input-row(style='display: none')
+            .control-group.center-block.vert-center
+              label.control-label Picture file
+              .controls
+                input#input-file(type='file', name='name')
+            include display_until
+          .row.input-row(style='display: none')
+            .control-group.center-block.vert-center
+              label.control-label Picture url
+              .controls
+                input#input-image(type='text', name='name')
+            include display_until
+          .row.input-row(style='display: none')
+            .control-group.center-block.vert-center
+              label.control-label Website url
+              .controls
+                input#input-web(type='text', name='name')
+            include display_until
+          .row.input-row(style='display: none')
+            .control-group.center-block.vert-center
+              label.control-label Twitter search
+              .controls
+                input#input-twitter(type='text', name='name')
+            include display_until
+          .row.input-row(style='display: none')
+            .control-group.center-block.vert-center
+              label.control-label Chat message
+              .controls
+                input#input-chat(type='text', name='name')
         .row.text-center
-          button.btn.btn-large.btn-primary#send Send
+          p
+            button.btn.btn-large.btn-primary#send Send
+        .row.text-right
+          p
+            .successMessage

@@ -1,1 +1,7 @@
-Something cool
+.container-fluid.padded-main
+  h1#message(style='position: relative') {message}
+
+  script
+    var down = Math.round(Math.random());
+    $('#message').css({top: (down * 300) + 'px'});
+    $('#message').animate({left: '200px', top: ((1 - down) * 300) + 'px'}, 10000);

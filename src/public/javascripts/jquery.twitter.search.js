@@ -52,7 +52,7 @@
 			if (opts.colorExterior)
 				$frame.css('border-color',opts.colorExterior);
 
-			height = $(window).height() - $('header').height();
+			height = $(window).height() - $($cont).offset().top - 30;
 			$cont.height(height);
 
 			if (opts.pause)

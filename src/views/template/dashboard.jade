@@ -1,16 +1,14 @@
-#dashboard
-  .span8
-    h1 Notifications
-    #notifications
-      | {#notifications}
-      .notification
-        .alert(class="{#classes}{.} {/classes}")
-          .body {text}
-          .title {author} // {title}
-      | {/notifications}
-  .span4
-     h1 Twitter Feed
-     #twitter-widget
+#dashboard.container-fluid.padded-main
+  .row-fluid
+    .span8
+      h1 Notifications
+      #notifications.
+        {#notifications}
+          {>notification/}
+        {/notifications}
+    .span4
+       h1 Twitter Feed
+       #twitter-widget
 
 script
   $('#twitter-widget').twitterSearch({term: "{term|uc}", title: "{term}"})

@@ -4,5 +4,5 @@
  */
 
 exports.home = function(req, res){
-  res.render('home', { title: 'Othello' });
+  res.render('home', { title: 'Lab Screens' });
 };
