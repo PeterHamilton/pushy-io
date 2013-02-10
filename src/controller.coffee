@@ -42,8 +42,8 @@ module.exports = (server, db) ->
           success firstTime: addHand dbHand
 
 
-  #queue.push require './model/csg_notifications'
-  #queue.push require './model/other_notifications'
+  queue.push require './model/csg_notifications'
+  queue.push require './model/other_notifications'
   queue.unshift (callback) ->
     callback
       type: 'chat'
