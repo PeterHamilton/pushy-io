@@ -15,13 +15,9 @@ render = (hand) ->
     $('#loaded-content').html gen
     $('#loaded-content').slideDown()
 
-render_twitter = (payload) ->
-  $('#twitter-widget').twitterSearch
-    term:  'ICHack'
-
 $ ->
   initialize_socket()
-  render_twitter()
+
   # Clock
   setInterval ->
     $('#clock').html(moment().format('hh:mm:ss a'))

@@ -19,6 +19,6 @@ module.exports = (callback) ->
         author: "csg"
         payload:
           notifications: notifications
-          twitter_widget_id: "#ichack"
+          term: "#ichack"
     else
       callback undefined
