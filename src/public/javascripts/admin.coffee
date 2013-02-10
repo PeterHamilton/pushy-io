@@ -14,6 +14,10 @@ handleSockets = ->
     $('#input-form .input-row').hide()
     $('#input-form .input-row').has("#input-#{type}").show()
 
+  $('input[id^=input-]').keypress (e) ->
+    if e.which is 13
+        $('#send').trigger 'click'
+
   $('#send').click ->
     type = currentType.data 'type'
     input = $("#input-#{type}")
