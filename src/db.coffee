@@ -1,5 +1,5 @@
 module.exports = (mongoose) ->
-	mongoURL = 'mongodb://Fist:cebVeryof8@ec2-54-228-51-119.eu-west-1.compute.amazonaws.com:27017/hands'
+	mongoURL = 'mongodb://mongodb://localhost:27017/hands'
 
 	Schema = mongoose.Schema
 

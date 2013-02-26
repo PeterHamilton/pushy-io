@@ -33,6 +33,7 @@ module.exports = (server, db) ->
       else
         hand.id = new UniqueID
         dbHand = new HandModel hand
+        console.log "saving to db"
         dbHand.save (err) ->
           if err?
             console.log "Unable to save " + dbHand
