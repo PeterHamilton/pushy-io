@@ -2,8 +2,28 @@
 handleSockets = ->
   socket = io.connect() #'http://localhost:3000'
 
-  #username = prompt "Username:", ""
-  username = "Boss"
+  username = undefined
+  sessionHash = undefined
+
+  $('#login-button').click ->
+    username = $('#login-value-username').val()
+    password = $('#login-value-password').val()
+    socket.emit 'login',
+      username: username
+      password: password
+    , (response) ->
+      console.log response
+      if !response.success
+        $.bootstrapGrowl "Username or password incorrect",
+          ele: '#login'
+          offset:
+            from: 'top'
+            amount: -40
+          type: 'error'
+      else
+        {sessionHash} = response
+        $("#login").data('lightbox').hide()
+        showMessage "Welcome #{username}"
 
   currentType = $('#input-type button.active')
 
@@ -12,19 +32,19 @@ handleSockets = ->
     type = currentType.data 'type'
     initializeTill()
     $('#input-form .input-row').hide()
-    $('#input-form .input-row').has("#input-#{type}").show()
+    $('#input-form .input-row').has("#input-value-#{type}").show()
 
-  $('input[id^=input-]').keypress (e) ->
+  $('input[id^=input-value-]').keypress (e) ->
     if e.which is 13
-        $('#send').trigger 'click'
+        $('#input-button').trigger 'click'
 
-  $('#send').click ->
+  $('#input-button').click ->
     type = currentType.data 'type'
-    input = $("#input-#{type}")
+    input = $("#input-value-#{type}")
     value = input.val()
     if value.length > 0
       socket.emit 'push',
-        author: username
+        sessionHash: sessionHash
         type: type
         till: tillTime()
         payload: switch type
@@ -36,15 +56,10 @@ handleSockets = ->
             term: value
           when 'chat'
             text: value
-      , (success) ->
-        if success?
-          console.log success
+      , (result) ->
+        if result.success
           input.val ''
-          $.bootstrapGrowl successMessage success,
-            offset:
-              from: 'top'
-              amount: 80
-            type: 'success'
+          showMessage successMessage currentType, result
 
 # Until UI handling
 dateFormat = 'DD/MM/YYYY'
@@ -70,7 +85,7 @@ printTime = (utc) ->
   (moment utc).format "#{timeFormat}, #{dateFormat}"
 
 # User feedback
-successMessage = (success) ->
+successMessage = (currentType, success) ->
   "#{currentType.text()} successfully pushed, " +
   if not success.firstTime?
     "Have fun."
@@ -80,11 +95,24 @@ successMessage = (success) ->
     else
       "it will be shown at #{printTime success.firstTime}."
 
-$ ->
-  initializeTill()
-  handleSockets()
+showMessage = (message) ->
+  $.bootstrapGrowl message,
+    offset:
+      from: 'top'
+      amount: 80
+    type: 'success'
 
-  # Clock
+displayClock = ->
   setInterval ->
     $('#clock').html(moment().format('hh:mm:ss a'))
   , 1000
+
+
+$ ->
+  initializeTill()
+  handleSockets()
+  displayClock()
+
+  $("#login").lightbox backdrop: 'static'
+
+

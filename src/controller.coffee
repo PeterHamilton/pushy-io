@@ -1,3 +1,5 @@
+auth = require './authenticator'
+
 module.exports = (server, db) ->
 
   # Attach to a server
@@ -23,13 +25,27 @@ module.exports = (server, db) ->
   # Client connected
   io.on 'connection', (socket) ->
 
+    # Authenticating client
+    socket.on 'login', (credentials, callback) ->
+      auth.authenticate credentials, (sessionToken) ->
+        console.log sessionToken
+        callback sessionToken
+
     # Registering a new hand
-    socket.on 'push', (hand, success) ->
-      console.log "received " + hand
+    socket.on 'push', (hand, callback) ->
+      username = auth.verify hand.sessionHash
+      console.log "From #{hand.sessionHash}, got #{username}"
+      if !username?
+        callback success: false
+        return
+
+      hand.author = username
+
+      #console.log "received " + hand
       if hand.type is 'chat'
         addToChat hand
         socket.broadcast.emit 'chat-data', hand
-        success {}
+        callback success: true
       else
         hand.id = new UniqueID
         dbHand = new HandModel hand
@@ -39,8 +55,10 @@ module.exports = (server, db) ->
             console.log "Unable to save " + dbHand
             console.error err
           else
-            console.log "Saved " + dbHand
-          success firstTime: addHand dbHand
+            #console.log "Saved " + dbHand
+          callback
+            success: !err?
+            firstTime: addHand dbHand
 
 
   queue.push require './model/csg_notifications'
@@ -67,8 +85,6 @@ module.exports = (server, db) ->
     hand = queue[position % queue.length]
     position++
     if hand.till? and hand.till < Date.now()
-      console.log "we get"
-
       HandModel.remove hand, (err) ->
         "Unable to remove " + hand
       queue.splice position - 1, 1

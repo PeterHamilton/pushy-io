@@ -12,7 +12,7 @@ path        = require 'path'
 mongoose    = require 'mongoose'
 db          = require('./db')(mongoose)
 
-app.set 'port', process.env.PORT || 3000 || 443 || 80
+app.set 'port', 55555 || process.env.PORT || 3000 || 443 || 80
 app.set 'views', __dirname + '/views'
 app.set 'view engine', 'jade'
 app.use express.favicon()

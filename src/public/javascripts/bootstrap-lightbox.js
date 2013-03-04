@@ -203,11 +203,11 @@
 			that.h = that.$element.height();
 			that.w = that.$element.width();
 			
-			if(that.options.resizeToFit)
+			$img = that.$element.find('.lightbox-content').find('img:first');
+
+			if(that.options.resizeToFit && $img.length)
 			{
-				
 				resizedOffs = 10;
-				$img = that.$element.find('.lightbox-content').find('img:first');
 				// Save original filesize
 				if(!$img.data('osizew')) $img.data('osizew', $img.width());
 				if(!$img.data('osizeh')) $img.data('osizeh', $img.height());
