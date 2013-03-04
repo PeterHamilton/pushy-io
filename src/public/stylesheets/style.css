@@ -50,6 +50,15 @@ body {
 #input-form {
   height: 250px;
 }
+.login-box {
+  padding: 30px 20px 10px;
+}
+.login-box .control-label {
+  width: 100px;
+}
+.login-box .controls {
+  margin-left: 120px;
+}
 .center-block {
   display: inline-block;
 }

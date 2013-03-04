@@ -177,7 +177,7 @@
 	};
 
 	$.fn.twitterSearch.defaults = {
-		url: 'http://search.twitter.com/search.json?callback=?&q=',
+		url: 'https://search.twitter.com/search.json?callback=?&q=',
 		anchors: true,				// true or false (enable embedded links in tweets)
 		animOutSpeed: 500,			// speed of animation for top tweet when removed
 		animInSpeed: 500,			// speed of scroll animation for moving tweets up
