@@ -1,4 +1,4 @@
-krb5 = require 'node-krb5'
+#krb5 = require 'node-krb5'
 crypto = require 'crypto'
 
 users = {}
@@ -14,7 +14,8 @@ newUser = (username) ->
 
 exports.authenticate = (credentials, callback) ->
   {username, password} = credentials
-  krb5.authenticate "#{username}@IC.AC.UK", password, (err) ->
+  #krb5.authenticate "#{username}@IC.AC.UK", password, (err) ->
+  do ->
     console.log "Authentication error: " + err if err?
     callback
       success: !err?
